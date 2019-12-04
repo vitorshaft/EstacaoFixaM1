@@ -1,8 +1,7 @@
 import socket
 import sqlite3
 
-TCP_IP = '192.168.43.95' # Atualizar o IP do PC quando necessario
-#TCP_IP = '192.168.0.27'
+TCP_IP = 'xxx.xxx.xxx.xxx' # Atualizar o IP do PC 
 TCP_PORT = 5005
 BUFFER_SIZE = 20 # Normalmente 1024. 20 e para resposta rapida.
 
