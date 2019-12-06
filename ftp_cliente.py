@@ -1,4 +1,5 @@
 from ftplib import FTP
+
 ftp = FTP('xxx.xxx.xxx.xxx')
 ftp.login('user','senha')
 
@@ -7,7 +8,7 @@ ftp.cwd('/home/pi/FTP')
 #ftp.storbinary('STOR ' + file_name, open(file_name, rb))
 def grabFile():
 
-    filename = 'GyroRT.db'
+    filename = 'gyroRT.json'
 
     localfile = open(filename, 'wb')
     ftp.retrbinary('RETR ' + filename, localfile.write, 1024)
