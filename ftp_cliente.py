@@ -8,7 +8,7 @@ ftp.cwd('/home/pi/FTP')
 #ftp.storbinary('STOR ' + file_name, open(file_name, rb))
 def grabFile():
 
-    filename = 'gyroRT.json'
+    filename = 'RT.json'
 
     localfile = open(filename, 'wb')
     ftp.retrbinary('RETR ' + filename, localfile.write, 1024)
