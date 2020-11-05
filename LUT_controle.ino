@@ -115,15 +115,18 @@ void setup() {
 void loop() {
   Antena antena;
   if(Serial.available()> 0){
-    long ang = Serial.parseInt(SKIP_WHITESPACE);
+    //long ang = Serial.parseInt(SKIP_WHITESPACE);
+    float ang = Serial.parseFloat(SKIP_WHITESPACE);
     if(ang > 0 && ang < 360){
       az = float(ang);
       //lcd.clear();
       lcd.setCursor(0,0);
       lcd.print("       ");
+      lcd.setCursor(0,0);
       String ms = "az: "+String(az);
       lcd.print(ms);
-      az = map(az,1.00,360.00,0,3060);
+      //az = map(az,1.00,360.00,0,3060);
+      az = map(az,1.00,360.00,0,2620);
       //int gammaAZ = EEPROM.read(0)*12;
       EEPROM.get(24,antena);
       float gammaAZ = antena.azim *100;
@@ -133,9 +136,11 @@ void loop() {
       EEPROM.put(24,antena);
       if(alfa > 1){
         horario(alfa,4);
+        azimute = B00000000;
       }
       else if(alfa < -1){
         anti(-alfa,4);
+        azimute = B00000000;
       }
       /*
       else{
@@ -148,6 +153,7 @@ void loop() {
       //lcd.clear();
       lcd.setCursor(0,1);
       lcd.print("       ");
+      lcd.setCursor(0,1);
       String m = "el: "+String(el);
       lcd.print(m);
       el = map(el,1.00,90.00,0,765);
@@ -160,9 +166,11 @@ void loop() {
       EEPROM.put(24,antena);
       if(beta > 0){
         elevH(beta,4);
+        elevacao = B000000;
       }
       else if(beta < 0){
         elevAH(-beta,4);
+        elevacao = B000000;
       }
       /*
       else{
